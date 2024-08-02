@@ -18,16 +18,20 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background:rgb(230, 230, 230);
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+.image-gallery-svg{
+  height:30px!important;
+  width:30px!important;
+  outline:0;
+  font-size: 20px!important;
+}
+#Aside{
+  transition: ease 0.5s;
 }
