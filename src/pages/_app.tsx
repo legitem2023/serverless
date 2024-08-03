@@ -8,8 +8,8 @@ import Header from "@/components/Partial/Header";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={apolloClient}>
-      <div className="flex flex-wrap h-auto">
-        <div className="flex flex-1 justify-center align-center bg-gradient-to-l from-lime-500 via-lime-700 to-lime-800">
+      <div className="flex flex-wrap h-[100vh]">
+        <div className="flex flex-1 justify-center h-[8vh] align-center bg-gradient-to-l from-lime-500 via-lime-700 to-lime-800 z-50">
           <Header/>
         </div>
         <Component {...pageProps} />;

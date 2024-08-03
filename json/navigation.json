@@ -3,7 +3,7 @@
     {
         "Name":"Products",
         "icon":"bi:tags-fill",
-        "Link":"./Products"
+        "Link":"./Product"
     },
     {
         "Name":"Real State",

@@ -7,7 +7,7 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import PriceDisplay from './Price';
 import Gallery from '../Gallery/Gallery';
 import useCategory from '../../../store/useCategory';
-
+import { useRouter } from 'next/router';
 type Sorting = 'name' | 'price' | '';
 
 const Thumbnail:React.FC = () => {
@@ -18,39 +18,24 @@ const [search, setSearch] = useState<string>('');
 const [currentPage, setCurrentPage] = useState<number>(1);
 const [sortBy, setSortBy] = useState<Sorting>('price');
 const [sortDirection, setSortDirection] = useState<'asc' | 'desc' | ''>('desc');
-
+const router = useRouter();
+let pathName = router.pathname;
 if(loading) return 
 const ProductsWithSearch = Products.ReadInventory?.filter((item:any) => item?.name?.toLowerCase()?.includes(search.toLowerCase()));
-
-
 const ProductCategory = ProductsWithSearch?.filter((item:any) => item?.category?.toLowerCase()?.includes(text.toLowerCase()));
-
-
-
-
 const itemsPerPage = 12;
 const totalItems = ProductCategory?.length;
 const totalPages = Math.ceil(totalItems! / itemsPerPage);
-
 const handlePageChange = (page: number) => {
   setCurrentPage(page);
 };
-
 const startIndex = (currentPage - 1) * itemsPerPage;
 const endIndex = startIndex + itemsPerPage;
-
-
 const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
   setCurrentPage(1);
   setSearch(e.target.value);
 };
-
-
-
 const handleSort = (column:any) => {
-
-  // const sorting = column.target.getAttribute("value")
-console.log(column);
   if (sortBy === column) {
     if (sortDirection === 'asc') {
       setSortDirection('desc');
@@ -107,8 +92,6 @@ const paginatedProducts = sortedProducts?.slice(
 
 
 
-
-
   return (
     <div className='flex flex-wrap justify-left md:justify-center gap-1 md:w-full lg:w-[60%]'>
               <div className='flex justify-center w-[100%]'>
@@ -136,8 +119,12 @@ const paginatedProducts = sortedProducts?.slice(
                     <Icon icon="mdi:tags"/> Products
                     </div>
                 {paginatedProducts.map((product:any,i:number)=>(
-                  <div key={i} className="flex-shrink-0 relative overflow-hidden bg-lime-600 rounded-lg max-w-xs shadow-sm cursor-pointer">
-                    <img src={product.thumbnail} className="relative w-[100%] transition-transform transform hover:scale-110 duration-500" alt={"alt"+i} />
+                  <div key={i}
+                      
+                       className="flex-shrink-0 relative overflow-hidden bg-lime-600 rounded-lg max-w-xs shadow-sm cursor-pointer m-2">
+                    <img src={product.thumbnail}
+                         onClick={()=>router.push(`/ProductView/${product.id}`)} 
+                         className="relative w-[100%] transition-transform transform hover:scale-110 duration-500" alt={"alt"+i} />
                     <div className="relative text-white m-3">
                       <span className="block opacity-75 -mb-1">Name :{product.name}</span>
                     </div>

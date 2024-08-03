@@ -5,6 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <link rel="manifest" href='/manifest.json' sizes="any" />
+        <title>Legitem</title>
       </Head>
       <body>
         <Main />
