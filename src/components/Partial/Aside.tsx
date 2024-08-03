@@ -11,7 +11,7 @@ const Aside: React.FC = () => {
 
   useEffect(() => {
 
-    if(window?.innerWidth > 931){
+    if(window?.innerWidth > 1080){
       if (reference.current) {
         if (status==false) {
           reference.current.classList.add('left-0');

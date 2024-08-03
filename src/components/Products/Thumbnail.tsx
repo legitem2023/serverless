@@ -24,7 +24,7 @@ let pathName = router.pathname;
 if(loading) return 
 const ProductsWithSearch = Products.ReadInventory?.filter((item:any) => item?.name?.toLowerCase()?.includes(search.toLowerCase()));
 const ProductCategory = ProductsWithSearch?.filter((item:any) => item?.category?.toLowerCase()?.includes(text.toLowerCase()));
-const itemsPerPage = 12;
+const itemsPerPage = 24;
 const totalItems = ProductCategory?.length;
 const totalPages = Math.ceil(totalItems! / itemsPerPage);
 const handlePageChange = (page: number) => {
@@ -116,6 +116,9 @@ const paginatedProducts = sortedProducts?.slice(
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-1  md:grid-cols-4 lg:grid-cols-6 w-[100vw]">
+                    <div className='flex flex-1 p-2 col-span-2 md:col-span-4 lg:col-span-6 flex-row align-center'>
+                        <div className='flex flex-col justify-center p-2 text-2xl font-semibold'>All Products</div>
+                    </div>
                     <div className='flex flex-1 p-2 border-b-4 border-t-4 border-solid col-span-2 md:col-span-4 lg:col-span-6 border-lime-800 flex-row align-center bg-lime-600'>
                         <div className='flex flex-col justify-center p-2'><Icon icon="mdi:tags" /></div>
                         <div className='flex flex-col justify-center'>Product</div>
@@ -130,7 +133,7 @@ const paginatedProducts = sortedProducts?.slice(
                     <div className="relative text-white m-3">
                       <span className="block opacity-75 -mb-1">Name :{product.name}</span>
                       <span className="block opacity-75 -mb-1">Ratings</span>
-                      <span className="block opacity-75 -mb-1 flex justify-center item-center"><Ratings/></span>
+                      <span className="block opacity-75 -mb-1 flex justify-center item-center"><Ratings/>(0)</span>
                     </div>
                     <div className="relative text-white m-3 flex flex-wrap flex-row">
                       <span className="flex-1 block bg-white rounded-full text-lime-950 text-xs font-bold px-2 py-1 leading-none flex items-center"><PriceDisplay amount={product.price} /></span>
