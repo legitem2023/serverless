@@ -45,3 +45,6 @@ body {
   background-size: auto 99%;
   background-repeat: no-repeat;
 }
+.customSharing button{
+  margin:10px;
+}

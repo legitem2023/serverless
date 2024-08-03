@@ -18,7 +18,7 @@ import {
   
   const Share = () => {
     return (
-      <div>
+      <div className='w-[100vw] flex flex-wrap flex-row item-center justify-center customSharing'>
         <FacebookShareButton
             url={'https://github.com/next-share'}
             quote={'next-share is a social share buttons for your next React apps.'}

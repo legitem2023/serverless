@@ -45,10 +45,10 @@ const ProductView:React.FC = () => {
                             <input type='number' defaultValue='1' className='col-span-5 flex w-[100%] text-center'/>
                         <Icon icon="mdi:minus-box" className='col-span-1 flex h-[4vh] w-[65px]'/>
                     </div>
-                    <div className='flex w-[100%] align-center justify-center item-center w-[100%] m-[10px] col-span-2'>
-                            <Icon icon="fa-solid:cart-plus" className='text-2xl'/>
+                    <div className='flex w-[100%] align-center justify-center item-center w-[100%] m-[auto] col-span-2 m-b-5 m-t-5'>
+                            <Icon icon="fa-solid:cart-plus" className='text-3xl m-5'/>
                     </div>
-                    <div className='col-span-2 grid grid-row w-[100%] h-[5vh] align-center justify-center m-[10px]'>
+                    <div className='col-span-2 grid grid-row w-[100%] h-[5vh] align-center justify-center m-b-5 m-t-5'>
                         <Share></Share>
                     </div>
                 </div>
