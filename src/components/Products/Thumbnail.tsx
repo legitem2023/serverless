@@ -8,6 +8,7 @@ import PriceDisplay from './Price';
 import Gallery from '../Gallery/Gallery';
 import useCategory from '../../../store/useCategory';
 import { useRouter } from 'next/router';
+import  Ratings  from '../Ratings/Ratings';
 type Sorting = 'name' | 'price' | '';
 
 const Thumbnail:React.FC = () => {
@@ -93,7 +94,7 @@ const paginatedProducts = sortedProducts?.slice(
 
 
   return (
-    <div className='flex flex-wrap justify-left md:justify-center gap-1 md:w-full lg:w-[60%]'>
+    <div className='flex flex-wrap justify-left md:justify-center gap-1 md:w-full lg:w-[55.56vw]'>
               <div className='flex justify-center w-[100%]'>
                 <div className='flex flex-row m-2 w-[100%]'>
                 <Input
@@ -114,23 +115,28 @@ const paginatedProducts = sortedProducts?.slice(
                   <Gallery/>
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4  md:grid-cols-4 lg:grid-cols-6 w-[100vw]">
-                    <div className='flex flex-row align-center col-span-2 md:col-span-4 lg:col-span-6  bg-gradient-to-l from-lime-500 via-lime-700 to-lime-800 p-2'>
-                    <Icon icon="mdi:tags"/> Products
+              <div className="grid grid-cols-2 gap-1  md:grid-cols-4 lg:grid-cols-6 w-[100vw]">
+                    <div className='flex flex-1 p-2 border-b-4 border-t-4 border-solid col-span-2 md:col-span-4 lg:col-span-6 border-lime-800 flex-row align-center bg-lime-600'>
+                        <div className='flex flex-col justify-center p-2'><Icon icon="mdi:tags" /></div>
+                        <div className='flex flex-col justify-center'>Product</div>
                     </div>
                 {paginatedProducts.map((product:any,i:number)=>(
                   <div key={i}
                       
-                       className="flex-shrink-0 relative overflow-hidden bg-lime-600 rounded-lg max-w-xs shadow-sm cursor-pointer m-2">
+                       className="flex-shrink-0 relative overflow-hidden bg-lime-600 rounded-lg max-w-xs shadow-sm cursor-pointer m-1">
                     <img src={product.thumbnail}
                          onClick={()=>router.push(`/ProductView/${product.id}`)} 
                          className="relative w-[100%] transition-transform transform hover:scale-110 duration-500" alt={"alt"+i} />
                     <div className="relative text-white m-3">
                       <span className="block opacity-75 -mb-1">Name :{product.name}</span>
+                      <span className="block opacity-75 -mb-1">Ratings</span>
+                      <span className="block opacity-75 -mb-1 flex justify-center item-center"><Ratings/></span>
                     </div>
                     <div className="relative text-white m-3 flex flex-wrap flex-row">
                       <span className="flex-1 block bg-white rounded-full text-lime-950 text-xs font-bold px-2 py-1 leading-none flex items-center"><PriceDisplay amount={product.price} /></span>
-                      <span className="flex-1 flex bg-transparent justify-center align-center rounded-full py-1"></span>
+                      <span className="flex-1 flex bg-transparent justify-center align-center rounded-full py-1">
+                        
+                      </span>
                       <span className="flex-1 flex bg-lime-800 justify-center align-center rounded-full py-1"><Icon icon="fa-solid:cart-plus" style={{right:"0px"}}/></span>
                     </div>
                   </div>

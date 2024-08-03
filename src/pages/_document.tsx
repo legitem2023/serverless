@@ -5,9 +5,10 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <link rel="manifest" href='/manifest.json' sizes="any" />
+        <link rel="icon" href="/icon-512x512.png" />
         <title>Legitem</title>
       </Head>
-      <body>
+      <body className="bg-stone-300">
         <Main />
         <NextScript />
       </body>

@@ -1,14 +1,13 @@
 [
-
+    {
+        "Name":"Home",
+        "icon":"ic:baseline-home",
+        "Link":"./Home"
+    },
     {
         "Name":"Products",
         "icon":"bi:tags-fill",
         "Link":"./Product"
-    },
-    {
-        "Name":"Real State",
-        "icon":"material-symbols:real-estate-agent-sharp",
-        "Link":"./RealState"
     },
     {
         "Name":"Crowd",

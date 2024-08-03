@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/client';
 import Gallery from '../Gallery/Gallery';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import Share from '../Share/Share';
+import Link from 'next/link';
 
 const ProductView:React.FC = () => {
     const {data:Products,loading,error} = useQuery(ReadInventory);
@@ -15,7 +16,7 @@ const ProductView:React.FC = () => {
     if(loading) return 
     const filtered = Products.ReadInventory.filter((item:any)=>item.id===id);
     return (
-        <div className="flex flex-wrap transform scale-95 h-[100vh] overflow-y-auto">
+        <div className="flex flex-wrap transform scale-98 h-[100vh] overflow-y-auto">
         {filtered.map((view: any, idx: number) => (
             <div key={idx} className="grid lg:grid-cols-4 gap-0 bg-[#f1f1f1] w-[100vw]">
             <div className="lg:col-span-3 grid lg:grid-cols-3">
@@ -23,9 +24,9 @@ const ProductView:React.FC = () => {
                     <div className='flex flex-1 p-2 border-t-4 border-b-4 border-solid border-lime-700 flex-row align-center bg-lime-600 h-[5vh]'>Products Data</div>
                 </div>
                 <div className='flex lg:col-span-3 bg-[#f1f1f1] h-[5vh]'>
-                  <a href="/"className="lg:col-span-3 flex items-center justify-center h-full px-5 text-1xl">
+                  <Link href="/"className="lg:col-span-3 flex items-center justify-center h-full px-5 text-1xl">
                   <Icon icon="ic:sharp-double-arrow" className='flex-1 h-[100%]' style={{transform:'scaleX(-1)'}} /> Back
-                  </a>
+                  </Link>
                 </div>
 
                 <div className='lg:col-span-2'>
@@ -47,7 +48,6 @@ const ProductView:React.FC = () => {
                     <div className='col-span-2 grid grid-row w-[100%] h-[5vh] align-center justify-center m-[10px]'>
                         <Share></Share>
                     </div>
-                    
                 </div>
                 <div className='flex lg:col-span-3 bg-[#f1f1f1] h-[5vh]'></div>
                 <div className='flex lg:col-span-3 px-3 border-t-4 border-b-4 border-solid border-lime-700 flex-row items-center  bg-lime-600 h-[5vh]'>

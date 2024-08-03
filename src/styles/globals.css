@@ -39,3 +39,9 @@ body {
 .ShareContainer div{
   padding:10px;
 }
+.logo{
+  background-image: url('http://localhost:3000/LegitemShield.png');
+  background-position: center;
+  background-size: auto 99%;
+  background-repeat: no-repeat;
+}
