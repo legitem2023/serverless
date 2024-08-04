@@ -13,8 +13,7 @@ const Gallery:React.FC = () => {
             "thumbnail":item.thumbnail
         }
     })
-
-      return <ImageGallery items={GalleryImages} thumbnailPosition="right"/>;
+    return <ImageGallery items={GalleryImages} thumbnailPosition="right"/>;
 
 }
 

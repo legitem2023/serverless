@@ -6,8 +6,8 @@ const ModelViewer = () => {
     const [useWidth, setWidth] = useState('100vw');
     const handleWidth = () => {
         if (window.innerWidth < 600) {
-            setWidth('85vw');
-            setHeight('85vw');
+            setWidth('93vw');
+            setHeight('93vw');
         } else {
             setWidth('100%');
             setHeight('500px');
@@ -23,7 +23,7 @@ const ModelViewer = () => {
         };
     });
     return (
-        <div className="canvas">
+        <div className="canvas flex flex-wrap justify-center item-center">
             <model-viewer
                 src={text}
                 alt="A 3D model"
@@ -31,7 +31,7 @@ const ModelViewer = () => {
                 ar-scale="fixed"
                 camera-controls touch-action="pan-y"
                 shadow-intensity="2"
-                skybox-image="https://hokei-storage.s3.ap-northeast-1.amazonaws.com/images/Legit/hdr/symmetrical_garden_02_1k.hdr"
+                skybox-image="/ninomaru_teien_1k.hdr"
                 skybox-height="2m"
                 max-camera-orbit="auto 90deg auto"
                 style={{ width: useWidth, height: useHeight }}>

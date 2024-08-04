@@ -14,11 +14,11 @@ const Category:React.FC = () => {
       <div className='flex flex-col justify-center p-2'><Icon icon='bxs:category'/></div>
       <div className='flex flex-col justify-center'>Category</div>
     </label>
-    <div className="overflow-hidden transition-all max-h-0 peer-checked:max-h-screen duration-500 ease-in-out border border-gray-300">
+    <div className="overflow-hidden transition-all max-h-0 peer-checked:max-h-screen duration-500 ease-in-out">
         <ul>
         {
             CategoryData.map((item:any,idx:number)=>(
-                <li key={idx} className='transition ease-in-out duration-500 flex-1 flex flex-row align-center hover:bg-lime-800 cursor-pointer p-2' onClick={()=>trigger(item.Name)}>
+                <li key={idx} className='transition ease-in-out duration-500 flex-1 flex flex-row align-center hover:bg-lime-700 hover:text-[#ffffff] cursor-pointer p-2' onClick={()=>trigger(item.Name)}>
                     <div className='flex flex-col justify-center p-2'><Icon icon={item.icon}/></div>
                     <div className='flex flex-col justify-center'>{item.Name}</div></li>
             ))

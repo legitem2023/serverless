@@ -9,11 +9,13 @@ import Gallery from '../Gallery/Gallery';
 import useCategory from '../../../store/useCategory';
 import { useRouter } from 'next/router';
 import  Ratings  from '../Ratings/Ratings';
+import useNav from '../../../store/useNav';
+import { truncateString } from '../../../utils/script';
 type Sorting = 'name' | 'price' | '';
 
 const Thumbnail:React.FC = () => {
   const {text} = useCategory();
-
+  const {setNav} = useNav();
 const {data:Products,loading,error} = useQuery(ReadInventory);
 const [search, setSearch] = useState<string>('');
 const [currentPage, setCurrentPage] = useState<number>(1);
@@ -94,9 +96,9 @@ const paginatedProducts = sortedProducts?.slice(
 
 
   return (
-    <div className='flex flex-wrap justify-left md:justify-center gap-1 md:w-full lg:w-[55.56vw]'>
+    <div className='flex flex-wrap justify-left md:justify-center gap-0 md:w-full lg:w-[55.56vw]'>
               <div className='flex justify-center w-[100%]'>
-                <div className='flex flex-row m-2 w-[100%]'>
+                <div className='flex flex-row m-1 w-[100%]'>
                 <Input
                   value={search}
                   placeholder='Search student ID'
@@ -104,42 +106,40 @@ const paginatedProducts = sortedProducts?.slice(
                   className='bg-transparent'
                 />
                 <select className='w-[20vw]' onChange={(e:any)=>handleSort(e)}>
-                  <option value='asc'>Sort by Price</option>
+                  <option value='asc'>Sort</option>
                   <option value='asc'>Low To High</option>
                   <option value='desc'>High To Low</option>
                 </select>
                 </div>
               </div>
               <div className='flex justify-center w-[100%]'>
-                <div className='lg:m-3 m-2 flex'>
-                  <Gallery/>
+                <div className='lg:m-1 m-1 flex flex-wrap flex-row'>
+                  <div className='flex-1'>
+                    <Gallery/>
+                  </div>
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-1  md:grid-cols-4 lg:grid-cols-6 w-[100vw]">
-                    <div className='flex flex-1 p-2 col-span-2 md:col-span-4 lg:col-span-6 flex-row align-center'>
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 w-[100vw]">
+                    {/* <div className='flex flex-1 p-2 col-span-2 sm:grid-cols-2 md:col-span-3 lg:col-span-4 xl:col-span-5 2xl:grid-cols-6 flex-row align-center'>
                         <div className='flex flex-col justify-center p-2 text-2xl font-semibold'>All Products</div>
-                    </div>
-                    <div className='flex flex-1 p-2 border-b-4 border-t-4 border-solid col-span-2 md:col-span-4 lg:col-span-6 border-lime-800 flex-row align-center bg-lime-600'>
+                    </div> */}
+                    <div className='flex flex-1 p-2 border-b-4 border-t-4 border-solid col-span-2 sm:grid-cols-2 md:col-span-3 lg:col-span-4 xl:col-span-5 2xl:col-span-6 border-lime-800 flex-row align-center bg-lime-600'>
                         <div className='flex flex-col justify-center p-2'><Icon icon="mdi:tags" /></div>
                         <div className='flex flex-col justify-center'>Product</div>
                     </div>
                 {paginatedProducts.map((product:any,i:number)=>(
-                  <div key={i}
-                      
-                       className="flex-shrink-0 relative overflow-hidden bg-lime-600 rounded-lg max-w-xs shadow-sm cursor-pointer m-1">
+                  <div key={i} className="flex-shrink-0 relative overflow-hidden border-4 border-lime-600 bg-lime-600 rounded-lg max-w-xs cursor-pointer m-1 addShadow">
                     <img src={product.thumbnail}
-                         onClick={()=>router.push(`/ProductView/${product.id}`)} 
+                         onClick={()=>{router.push(`/ProductView/${product.id}`);setNav(pathName);}} 
                          className="relative w-[100%] transition-transform transform hover:scale-110 duration-500" alt={"alt"+i} />
-                    <div className="relative text-white m-3">
-                      <span className="block opacity-75 -mb-1">Name :{product.name}</span>
-                      <span className="block opacity-75 -mb-1">Ratings</span>
-                      <span className="block opacity-75 -mb-1 flex justify-center item-center"><Ratings/>(0)</span>
+                    <div className="relative text-white grid grid-cols-3">
+                      <span className="flex-1 col-span-1 text-shadow-sm">Name</span><span className='col-span-2'>{truncateString(product.name,25)}</span>
+                      <span className='col-span-3 flex justify-center'><Ratings/></span>
+                      <span className="flex-1 col-span-2">Views</span><span className='col-span-1'>(0)</span>
                     </div>
                     <div className="relative text-white m-3 flex flex-wrap flex-row">
                       <span className="flex-1 block bg-white rounded-full text-lime-950 text-xs font-bold px-2 py-1 leading-none flex items-center"><PriceDisplay amount={product.price} /></span>
-                      <span className="flex-1 flex bg-transparent justify-center align-center rounded-full py-1">
-                        
-                      </span>
+                      <span className="flex-1 flex bg-transparent justify-center align-center rounded-full py-1"></span>
                       <span className="flex-1 flex bg-lime-800 justify-center align-center rounded-full py-1"><Icon icon="fa-solid:cart-plus" style={{right:"0px"}}/></span>
                     </div>
                   </div>
