@@ -23,7 +23,8 @@ const [sortBy, setSortBy] = useState<Sorting>('price');
 const [sortDirection, setSortDirection] = useState<'asc' | 'desc' | ''>('desc');
 const router = useRouter();
 let pathName = router.pathname;
-if(loading) return 
+if(loading) return <Icon icon="eos-icons:bubble-loading"  style={{color:'lime'}} />
+if(error) return <h1>Something went wrong...</h1> 
 const ProductsWithSearch = Products.ReadInventory?.filter((item:any) => item?.name?.toLowerCase()?.includes(search.toLowerCase()));
 const ProductCategory = ProductsWithSearch?.filter((item:any) => item?.category?.toLowerCase()?.includes(text.toLowerCase()));
 const itemsPerPage = 24;

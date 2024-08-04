@@ -6,9 +6,7 @@ import useCollapse from '../../../store/useCollapse';
 
 const Aside: React.FC = () => {
   const {status} = useCollapse();
-
   const reference = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
 
     if(window?.innerWidth > 1080){
