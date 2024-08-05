@@ -15,6 +15,7 @@ const apolloServer = new ApolloServer({
   persistedQueries: {
     cache: new InMemoryLRUCache({ maxSize: 100 * 1024 * 1024 }), // 100 MB max size
   },
+  context: createContext,
 });
 
 const startServer = apolloServer.start();
