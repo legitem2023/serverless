@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "cross-env NODE_ENV=development next dev",
+    "build": "cross-env NODE_ENV=production next build",
+    "start": "cross-env NODE_ENV=production next start",
+    "lint": "cross-env NODE_ENV=development next lint"
   },
   "dependencies": {
     "@apollo/client": "^3.11.2",
@@ -32,6 +32,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/react-image-gallery": "^1.2.4",
+    "cross-env": "^7.0.3",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
