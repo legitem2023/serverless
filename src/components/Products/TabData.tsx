@@ -50,10 +50,10 @@ export default function TabData() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <Gallery/>
+
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <ModelViewer/>
+        <ModelViewer />
       </CustomTabPanel>
     </Box>
   );

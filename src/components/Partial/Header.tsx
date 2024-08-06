@@ -22,10 +22,10 @@ const Header: React.FC = () => {
   let menu = ((navigation: any) => {
     return navigation.map((item: any) => {
       return item.Name !== 'Account' ? (
-        <Link 
-          key={item.Link} 
-          href={"/" + item.Link} 
-          onClick={() => setNav(item.Link)} 
+        <Link
+          key={item.Link}
+          href={"/" + item.Link}
+          onClick={() => setNav(item.Link)}
           className='transition ease-in-out duration-500 col-span-1 flex flex-col justify-center item-center p-2 hover:bg-lime-500 cursor-pointer h-[8vh]'
         >
           <Icon icon={item.icon} className='w-[100%] h-[30px] text-lime-950' />
