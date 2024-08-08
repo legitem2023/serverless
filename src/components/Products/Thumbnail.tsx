@@ -22,7 +22,7 @@ type Props = {
   Inventory: Inventory[];
 };
 
-const Thumbnail = ({ Inventory }: Props) => {
+const Thumbnail = ({ Inventory }:any) => {
   const { text } = useCategory();
   const { setNav } = useNav();
 
@@ -33,7 +33,7 @@ const Thumbnail = ({ Inventory }: Props) => {
   const router = useRouter();
   let pathName = router.pathname;
 
-  const ProductsWithSearch = Inventory.filter((item: any) =>
+  const ProductsWithSearch = Inventory?.filter((item: any) =>
     item?.name?.toLowerCase()?.includes(search.toLowerCase())
   );
 
@@ -108,7 +108,7 @@ const Thumbnail = ({ Inventory }: Props) => {
       <div className='flex justify-center w-[100%]'>
         <div className='lg:m-1 m-1 flex flex-wrap flex-row'>
           <div className='flex-1'>
-            <Gallery data={Inventory} />
+            <Gallery data={paginatedProducts} />
           </div>
         </div>
       </div>

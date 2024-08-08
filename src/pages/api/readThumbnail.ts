@@ -7,7 +7,16 @@ type Data = {
 
 export default async function handler(_req: NextApiRequest, res: NextApiResponse<Data>) {
 
-  const result: any = await prisma.inventory.findMany();
+  const result: any = await prisma.inventory.findMany({
+    select: {
+      id: true,
+      name: true,
+      price: true,
+      thumbnail: true,
+      category: true,
+      color: true
+    }
+  });
 
   res.status(200).json(result);
 }
