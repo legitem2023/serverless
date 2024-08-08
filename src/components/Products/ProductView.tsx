@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import { Icon } from '@iconify/react/dist/iconify.js';
@@ -18,7 +18,9 @@ type Props = {
     Inventory: Inventory[];
 };
 
-const ProductView = ({ Inventory }: Props) => {
+const ProductView = ({Inventory}:any) => {
+    console.log(Inventory+"<<<<<<<?????")
+
     const router = useRouter();
     const query = router.query;
     const id = query.id;
@@ -38,7 +40,7 @@ const ProductView = ({ Inventory }: Props) => {
                         </div>
 
                         <div className='lg:col-span-2'>
-                            <TabData />
+                            <TabData data={filtered}/>
                         </div>
                         <div className='lg:col-span-1 grid grid-cols-2'>
                             <div className='m-[10px]'>Name:</div><div className='m-[10px]'>{view.name}</div>

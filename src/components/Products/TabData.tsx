@@ -34,7 +34,7 @@ function a11yProps(index: number) {
   };
 }
 
-export default function TabData() {
+export default function TabData({ data }: any) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -50,7 +50,7 @@ export default function TabData() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-
+        <Gallery data={data} />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <ModelViewer />
