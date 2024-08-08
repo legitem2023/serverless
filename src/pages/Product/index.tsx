@@ -19,6 +19,7 @@ export default function Product() {
       try {
         const response = await fetch("/api/readThumbnail");
         const result = await response.json();
+        console.log(result);
         setInventory(result);
       } catch (error) {
         console.error("Error fetching inventory:", error);
